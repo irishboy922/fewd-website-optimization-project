@@ -34,7 +34,7 @@ After optimizing the `index.html` page I received a score of **95** for both mob
 1. Moved the `var items = document.querySelectorAll('.mover');` outside of the `updatePositions()` function.
 2. Changed the `querySelectorAll` to `getElementsByClassName`.
 3. Assigned the `items.length` to the variable `itemsLen`.
-4. Created an empty var `phase` outside the `for` loop.
+4. Created an empty variable `phase` outside the `for` loop.
 5. Called `updatePositions` function in a `requestAnimationFrame()`.
 
 #####Pizza elements Modifications
