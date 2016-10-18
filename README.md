@@ -1,55 +1,51 @@
-## Website Performance Optimization portfolio project
+## Website Performance Optimization Project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+####Project Description
+For the Website Performance Optimization project we were asked to (1) optimize `index.html` so that the page gets a score of at least **90** for both mobile and desktop using Google's PageSpeed Insights site and (2) optimize the `main.js` file for the `pizza.html` page so that the page scrolls at **60fps**.
 
-To get started, check out the repository and inspect the code.
+### Part 1: Optimize PageSpeed Insights score for index.html
 
-### Getting started
+In order to test the page in [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) use this project's Github pages URL: https://irishboy922.github.io/fewd-website-optimization-project/
 
-####Part 1: Optimize PageSpeed Insights score for index.html
+####Optimization Score:
+After optimizing the `index.html` page I received a score of **95** for both mobile and desktop.
 
-Some useful tips to help you get started:
+#####HTML Optimizations
+1. Inlined the style.css properties and removed the link tag.
+2. Placed a `media="print"` attribute to the `print.css` link tag.
+3. Inlined the `perfmatters.js` javascript code into the index.html file.
+4. Removed the `perfmatters.js` script tag.
+5. Added an `async` attribute to the Google Anylitics script tag.
+6. Moved the inline Google Analytics code to the bottom of the page, right before the closing body tag.
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+#####CSS
+1. Minified the `print.css` file and redirected the `print.css` link tag to the minified version.
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
+#####IMAGES
+1. Created a thumbnail size version of the `pizzeria.jpg` file and placed it in the `img/` folder.
+2. Compressed all the files in the `img/` folder.
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
 
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ./ngrok http 8080
-  ```
+### Part 2: Optimize Frames per Second in pizza.html
 
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
+#### Frame Rate
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+#####updatePositions() Function Modifications
+1. Moved the `var items = document.querySelectorAll('.mover');` outside of the `updatePositions()` function.
+2. Changed the `querySelectorAll` to `getElementsByClassName`.
+3. Assigned the `items.length` to the variable `itemsLen`.
+4. Created an empty var `phase` outside the `for` loop.
+5. Called `updatePositions` function in a `requestAnimationFrame()`.
 
-####Part 2: Optimize Frames per Second in pizza.html
+#####Pizza elements Modifications
+1. Reduced the number of pizza elements to be created from 200 to 30.
+2. Removed the width and height declarations from the `for` loop and gave the `.mover` class in the `views/css/style.css` sheet the width value of `73.333px` and a height value of `100px`.
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
-
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
-
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+#### Computational Efficiency
+Was able to reduce the time to resize pizza's down to **0.66ms**.
+#####changePizzaSizez() Function Modifications
+1. Created a variable `pizzaContainers` to store an array of all the `randomPizzaContainer`'s and eliminate redundant code.
+2. Removed the `determinDx` function and placed the `sizeSwitcher` function inside the `changePizzaSizes` function.
+3. Refactored the `switch` to work inside the `changePizzaSizes` function.
+4. Refactored the `changePizzaSizes` code to give the pizza's a percentage value for the new width.
+ 
