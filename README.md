@@ -30,7 +30,7 @@ After optimizing the `index.html` page I received a score of **95** for both mob
 
 #### Frame Rate
 
-#####updatePositions() Function
+#####updatePositions() Function Modifications
 1. Moved the `var items = document.querySelectorAll('.mover');` outside of the `updatePositions()` function.
 2. Changed the `querySelectorAll` to `getElementsByClassName`.
 3. Assigned the `items.length` to the variable `itemsLen`.
