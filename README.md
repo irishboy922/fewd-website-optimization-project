@@ -5,7 +5,7 @@ For the Website Performance Optimization project we were asked to (1) optimize `
 
 ### Part 1: Optimize PageSpeed Insights score for index.html
 
-In order to test the page in [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) use this project's Github pages URL: https://irishboy922.github.io/fewd-website-optimization-project/
+In order to test the page in [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) use this project's Github pages URL: https://irishboy922.github.io/FEWD-website-optimization-project/
 
 ####Optimization Score:
 After optimizing the `index.html` page I received a score of **95** for both mobile and desktop.
